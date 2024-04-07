@@ -1,16 +1,28 @@
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as apprunner_alpha from "@aws-cdk/aws-apprunner-alpha";
+import * as cdk from "aws-cdk-lib";
+import * as ecrAssets from "aws-cdk-lib/aws-ecr-assets";
+import { Construct } from "constructs";
 
 export class WebpageStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const imageAsset = new ecrAssets.DockerImageAsset(this, "Image", {
+      directory: "./theorem-home",
+    });
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'WebpageQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const service = new apprunner_alpha.Service(this, "NextJsService", {
+      source: apprunner_alpha.Source.fromAsset({
+        asset: imageAsset,
+      }),
+      cpu: apprunner_alpha.Cpu.ONE_VCPU,
+      memory: apprunner_alpha.Memory.TWO_GB,
+    });
+    service.addEnvironmentVariable(
+      "RANDOM_IMAGE_API_URL",
+      "https://random.imagecdn.app/500/500"
+    );
+
+    new cdk.CfnOutput(this, "ServiceUrl", { value: service.serviceUrl });
   }
 }

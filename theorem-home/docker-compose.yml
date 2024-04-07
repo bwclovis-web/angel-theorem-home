@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  angel-theorem-home:
+    container_name: angel-theorem-home
+    image: nextapp
+    build: .
+    ports:
+      - "3000:3000"
