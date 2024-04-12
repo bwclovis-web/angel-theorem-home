@@ -1,19 +1,17 @@
 'use client'
 
-import { useState, useEffect, createContext } from 'react'
+import UseNavigation from '@/hooks/UseNavigation'
+import {createContext } from 'react'
 
 const ctxDefaults = {
     isNavActive: false,
-    updateNav: () => {}
+    updateNav: () => {Boolean}
 }
 
 const TheoremContext = createContext(ctxDefaults)
 
 export const MainProvider = ({children}) => {
-    const [isNavActive, setIsNavActive] = useState(ctxDefaults.isNavActive)
-    const updateNav = () => {
-        return setIsNavActive(!isNavActive)
-    }
+    const [isNavActive, updateNav] = UseNavigation(ctxDefaults.isNavActive)
 
     return (
         <TheoremContext.Provider 

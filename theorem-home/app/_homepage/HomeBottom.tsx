@@ -19,9 +19,11 @@ const HomeBottom = () => {
 
     return (
         <>
-            <button className={styles.slide_trigger} onClick={() => setOpenDrawer(!openDrawer) } ref={triggerRef} tabIndex={0}>
-                <GiImbricatedArrows size={40} className={styles.slide_trigger_button}/>
-            </button>
+            {!isNavActive && 
+                <button className={styles.slide_trigger} onClick={() => setOpenDrawer(!openDrawer) } ref={triggerRef} tabIndex={0}>
+                    <GiImbricatedArrows size={40} className={styles.slide_trigger_button}/>
+                </button>
+            }
             <div className={`${drawerClasses} ${styles.bottom_slide}`} id="content-drawer" tabIndex={0}>
                 <div className="w-3/4 mx-auto text-center">
                     <section className="pt-10 bg-slate-900 px-6">
