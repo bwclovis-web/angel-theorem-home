@@ -7,7 +7,7 @@ import {NavData} from '../../data/navigation'
 const Navigation = () => {
     const {isNavActive} = useContext(TheoremContext)
     const NavWrapperClasses = clsx({
-        'bg-green-700 absolute p-6 z-20': true,
+        'bg-green-900 absolute p-6 z-20': true,
         'h-0 -translate-y-[100%]': !isNavActive,
         'md:h-full md:max-w-max transition-all w-full translate-y-[0] duration-400': isNavActive,
     })
@@ -17,10 +17,8 @@ const Navigation = () => {
     })
 
     const NavListClasses = clsx({
-        'flex md:flex-col justify-around': true
+        'flex md:flex-col justify-around md:gap-6 uppercase': true
     })
-
-    console.log(`%c NavData`, 'background: #0047ab; color: #fff; padding: 2px:', NavData)
     return (
         <header className={NavWrapperClasses}>
             <nav className={NavClasses}>

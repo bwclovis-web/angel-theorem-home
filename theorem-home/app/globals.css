@@ -19,13 +19,21 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-slate-950
 }
+
+h1,
+.h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  @apply uppercase font-bold tracking-wide
+}
+
+h2,
+.h2 {
+  font-size: clamp(2rem, 6vw, 3.75rem);
+}
+
+
 
 @layer utilities {
   .text-balance {
@@ -33,6 +41,10 @@ body {
   }
   .content-container {
     @apply max-w-[1440px] px-6 mx-auto w-full
+  }
+
+  .dynamic-offset {
+    @apply pt-28 px-5 md:ml-40 md:pt-10 md:w-1/2 
   }
   
 }
