@@ -3,6 +3,7 @@
 import { useState } from "react"
 import clsx from 'clsx'
 import styles from './intro.module.scss'
+import { GiImbricatedArrows } from "react-icons/gi";
 
 const HomeBottom = () => {
     const [openDrawer, setOpenDrawer] = useState(false)
@@ -12,11 +13,11 @@ const HomeBottom = () => {
     })
     return (
         <>
-            <button className={styles.slide_trigger} onClick={() => setOpenDrawer(!openDrawer) }>OHHELLO</button>
+            <button className={styles.slide_trigger} onClick={() => setOpenDrawer(!openDrawer) }><GiImbricatedArrows size={40} className={styles.slide_trigger_button}/></button>
             <div className={`${drawerClasses} ${styles.bottom_slide}`}>
                 <div className="content-container text-center">
                     <section className="pt-10 bg-slate-900 ">
-                        <h2 className="text-4xl pb-5">What'a all this then?</h2>
+                        <h2 className="text-4xl pb-5">Whats all this then?</h2>
                         <div>
                             <div>
                                 <h3>Item 1</h3>

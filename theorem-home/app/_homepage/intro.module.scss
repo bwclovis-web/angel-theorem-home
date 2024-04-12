@@ -1,22 +1,29 @@
+$small:  900px;
+$md: 1280px;
+$lg: 1300px;
+
 .glitch_heading {
     display: flex;
     position: relative;
     flex-direction: column;
     padding: 0 1rem;
-    font-size: 10rem;
+    font-size: clamp(4rem, 10vw, 10rem);
     font-weight: 800;
     line-height: 1;
     color: #FAF9F6;
-
+    
     span:nth-of-type(3n),
     span:last-of-type {
+      align-self: flex-end;
+      @media screen and (max-width: 1300px) {
         align-self: flex-end;
+      }
     }
 }
 
 .glitch_span {
     position: relative;
-    animation: text-glitch 5s 6.5s infinite, fade-in 1s 2.5s forwards ease-in-out;
+    animation: text-glitch 5s 6.5s 2, fade-in 1s 2.5s forwards ease-in-out;
     opacity: 0;
 
     &::before {
@@ -26,7 +33,7 @@
         text-shadow: -4px 0 #663399;
         overflow: hidden;
         top: 0;
-        animation: pre-noise 10s linear infinite alternate-reverse, text-glitch 5s 6.5s infinite;
+        animation: text-glitch 5s 6.5s 2;
     }
 
     &::after {
@@ -36,7 +43,7 @@
         text-shadow: -2px 0 lightgreen;
         overflow: hidden;
         top: 0;
-        animation: after-noise 17s linear infinite alternate-reverse, text-glitch 5s 6s infinite;
+        animation: text-glitch 5s 6s 2;
     }
 }
 
@@ -52,6 +59,7 @@
 .background_lines {
     overflow: hidden;
     mix-blend-mode: difference;
+    background-color: black;
 
     &::before {
         content: "";
@@ -72,9 +80,9 @@
 }
 
 .glitch_subheadings {
-    font-size: 1.5rem;
+    font-size: clamp(.5rem, 3vw, 1.5rem);
     letter-spacing: 0.15rem;
-    animation: text-glitch 5s 5.5s infinite, fade-in 1s 2.5s forwards ease-in-out;
+    animation: text-glitch 7s 9.5s 2, fade-in 1s 2.5s forwards ease-in-out;
     opacity: 0;
     font-weight: 500;
 }
@@ -84,10 +92,28 @@
 }
 
 .slide_trigger {
-  padding: 2rem 0;
+  padding: clamp(.5rem, 3vw, 1.5rem);
   transform: translateY(0);
   opacity: 0;
   animation: slide-down 1s 2.5s forwards ease-in-out;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  filter: contrast(25%);
+  transition: all .4s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.21);
+    filter: none;
+    animation: slide-down 1s 2.5s forwards ease-in-out, pulse-animation 2s  infinite;
+    transition: all .4s ease-in-out;
+  }
+
+  &_button {
+    transition: all .4s ease-in-out;
+    transform: rotate(45deg);
+    filter: drop-shadow(3px 5px 10px var(--purple));
+  }
 }
 
 @keyframes fudge {
@@ -126,23 +152,12 @@
       transform: rotateX(0deg) skewX(0deg);
     }
 }
-@keyframes pre-noise {
-    $steps: 30;
-    @for $i from 1 through $steps {
-      #{percentage($i*(1/$steps))} {
-        $top: random(100);
-        $bottom: random(101 - $top);
-        clip-path: inset(#{$top}px 0 #{$bottom}px 0);
-      }
-    }
-}
-@keyframes after-noise {
-    $steps: 30;
-    @for $i from 0 through $steps {
-      #{percentage($i*(1/$steps))} {
-        $top: random(100);
-        $bottom: random(101 - $top);
-        clip-path: inset(#{$top}px 0 #{$bottom}px 0);
-      }
-    }
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 8, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
 }

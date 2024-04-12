@@ -2,7 +2,7 @@ import styles from './intro.module.scss'
 
 const Intro = () => (
     <>
-        <div className='w-1/2 mt-10'>
+        <div className='mt-10 xl:w-[900px] 2xl:w-[1200px]'>
             <span className={styles.glitch_subheadings}>THE</span>
             <h1 className={styles.glitch_heading}>
                 <span className='relative flex flex-col'>
