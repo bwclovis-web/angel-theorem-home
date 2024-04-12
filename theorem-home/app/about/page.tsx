@@ -3,7 +3,7 @@ const AboutPage = () => {
         <section className="dynamic-offset">
             <h1 className="text-center md:text-left">What the what? </h1>
             <div className="text-xl">
-                <p>After several years in the development game, Ive decided to do the one thing I've never done, have my own site. </p>
+                <p>After several years in the development game, Ive decided to do the one thing Ive never done, have my own site. </p>
                 <p>This will be constantly evolving, so what one button does today, may be different tomorrow.  </p>
 
                 <div className="flex flex-col md:flex-row justify-between mt-6">
