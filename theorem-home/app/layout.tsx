@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
+import {MainProvider} from "./providers/mainProvider"
 import "./globals.css";
+import Navigation from "./ui/Navigation/Navigation";
 
 const inter = Nunito_Sans({
   subsets: ["latin"],
@@ -18,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} overflow-y-hidden`}>{children}</body>
+      <body className={`${inter.className}`}>
+        <MainProvider>
+          <Navigation />
+          {children}
+        </MainProvider>
+      </body>
     </html>
   );
 }

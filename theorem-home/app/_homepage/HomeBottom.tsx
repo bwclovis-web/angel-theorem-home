@@ -1,35 +1,40 @@
 "use client"
 
-import { useState } from "react"
+import { useContext, useRef, useState } from "react"
 import clsx from 'clsx'
 import styles from './intro.module.scss'
 import { GiImbricatedArrows } from "react-icons/gi";
+import IntroCard from "./card/IntroCard";
+import TheoremContext from "../providers/mainProvider";
 
 const HomeBottom = () => {
     const [openDrawer, setOpenDrawer] = useState(false)
+    const {updateNav, isNavActive} = useContext(TheoremContext)
+    const triggerRef = useRef<any>(null)
     const drawerClasses = clsx({
-        'w-full relative opacity-0 transition ease-in-out delay-150' : true,
-        'translate-y-[100%] transition ease-in-out delay-150': !openDrawer
+        'w-full relative opacity-1 transition ease-in-out delay-150' : true,
+        'translate-y-[100%] opacity-0 transition ease-in-out delay-150': !openDrawer, 
+        'translate-x-[100%] transition ease-in-out duration-75 delay-200': isNavActive
     })
+
     return (
         <>
-            <button className={styles.slide_trigger} onClick={() => setOpenDrawer(!openDrawer) }><GiImbricatedArrows size={40} className={styles.slide_trigger_button}/></button>
-            <div className={`${drawerClasses} ${styles.bottom_slide}`}>
-                <div className="content-container text-center">
-                    <section className="pt-10 bg-slate-900 ">
-                        <h2 className="text-4xl pb-5">Whats all this then?</h2>
-                        <div>
-                            <div>
-                                <h3>Item 1</h3>
-                            </div>
-                            <div>
-                                <h3>item 2</h3>
-                            </div>
-                            <div>
-                                <h3>item 3</h3>
-                            </div>
+            <button className={styles.slide_trigger} onClick={() => setOpenDrawer(!openDrawer) } ref={triggerRef} tabIndex={0}>
+                <GiImbricatedArrows size={40} className={styles.slide_trigger_button}/>
+            </button>
+            <div className={`${drawerClasses} ${styles.bottom_slide}`} id="content-drawer" tabIndex={0}>
+                <div className="w-3/4 mx-auto text-center">
+                    <section className="pt-10 bg-slate-900 px-6">
+                        <h2 className="text-6xl pb-5">Whats all this then?</h2>
+                        <div className="flex justify-center gap-6">
+                            <IntroCard heading={'A rogue experiment'} imgSrc={"/img/escaped-experiment.png"}/> 
+                            <IntroCard heading={'A place to hang my hat'} imgSrc={"/img/hat.jpg"}/> 
+                            <IntroCard heading={'A type of notepad'} imgSrc={"/img/note.jpg"}/> 
                         </div>
-                        <button className="py-10" onClick={() => setOpenDrawer(!openDrawer) }>NO MAS</button>
+                        <div>
+                            <button className="py-10" onClick={() => updateNav() } tabIndex={0}>I want to see!</button>
+                            <button className="py-10" onClick={() => setOpenDrawer(!openDrawer) } tabIndex={0}>I just want to contemplate life</button>
+                        </div>
                     </section>
                 </div>
             </div>

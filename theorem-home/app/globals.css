@@ -32,7 +32,7 @@ body {
     text-wrap: balance;
   }
   .content-container {
-    @apply max-w-[1440px] px-6 mx-auto
+    @apply max-w-[1440px] px-6 mx-auto w-full
   }
   
 }
