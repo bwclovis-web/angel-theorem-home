@@ -34,8 +34,9 @@ const HomeBottom = () => {
                             <IntroCard heading={'A type of notepad'} imgSrc={"/img/note.jpg"}/> 
                         </div>
                         <div>
-                            <button className="py-10" onClick={() => updateNav() } tabIndex={0}>I want to see!</button>
-                            <button className="py-10" onClick={() => setOpenDrawer(!openDrawer) } tabIndex={0}>I just want to contemplate life</button>
+                            <button className="py-10 px-2" onClick={() => updateNav() } tabIndex={0}>I want to see!</button>
+                            |
+                            <button className="py-10 px-2" onClick={() => setOpenDrawer(!openDrawer) } tabIndex={0}>I just want to contemplate life</button>
                         </div>
                     </section>
                 </div>

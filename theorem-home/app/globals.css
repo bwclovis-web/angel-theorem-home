@@ -11,6 +11,14 @@
   --bg-color: #f5f5f4;
   --accent-color: #1e1b4b;
 }
+:root {
+  --sz: 1.3vmin;
+  --on: #03A9F4;
+  --of: #fff0;
+  --gr: #666666;
+  --tr: all 0.5s ease 0s;
+  --lg: var(--of);
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -24,8 +32,7 @@
 }
 
 body {
-  color: var(--font-color);
-  background-color: var(--bg-color);
+  @apply bg-stone-100 dark:bg-slate-950 text-stone-900 dark:text-stone-300
 }
 
 h1,

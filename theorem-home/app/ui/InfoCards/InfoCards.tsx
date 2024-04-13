@@ -3,7 +3,7 @@ import Image from "next/image"
 const InfoCard = ({data}) => {
     const {label, imgSrc , role, details, url} = data
     return (
-        <div className="w-full text-center shadow-xl bg-stone-50  border-l border-r border-b">
+        <div className="w-full text-center shadow-xl bg-stone-50 dark:bg-stone-950 dark:border-stone-800  border-l border-r border-b">
             <Image
                 alt=''
                 width={800}
@@ -20,7 +20,7 @@ const InfoCard = ({data}) => {
                     <summary className="mb-6">About this project</summary>
                     <div className="rich-summary text-left px-5 pb-4" dangerouslySetInnerHTML={{__html: details}}/>
                 </details>
-                {url && <a href={url} className="bg-indigo-700 px-4 py-1 text-slate-100 uppercase underline tracking-wide font-bold text-base">Visit Site</a>}
+                {url && <a href={url} className="bg-indigo-700 dark:bg-indigo-950 px-4 py-1 text-slate-100 uppercase underline tracking-wide font-bold text-base">Visit Site</a>}
             </div>
         </div>
     )
