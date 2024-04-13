@@ -1,6 +1,7 @@
 import Image from "next/image"
+import { InfoCardType } from "./InfoCardTypes"
 
-const InfoCard = ({data}) => {
+const InfoCard = ({data} : InfoCardType) => {
     const {label, imgSrc , role, details, url} = data
     return (
         <div className="w-full text-center shadow-xl bg-stone-50 dark:bg-stone-950 dark:border-stone-800  border-l border-r border-b">
