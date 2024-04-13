@@ -8,9 +8,9 @@ import TheoremContext from "./providers/mainProvider";
 export default function Home() {
   const {isNavActive} = useContext(TheoremContext)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between md:px-24 relative overflow-hidden">
+    <div className="flex text-slate-100 bg-slate-950 min-h-screen flex-col items-center justify-between md:px-24 relative overflow-hidden">
       <Intro />
       {!isNavActive && <HomeBottom />}
-    </main>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
-const AboutPage = () => {
-    return (
+const AboutPage = () =>  (
         <section className="dynamic-offset">
-            <h1 className="text-center md:text-left">What the what? </h1>
+            <h1 className="text-center md:text-left">What the what?</h1>
             <div className="text-xl">
                 <p>After several years in the development game, Ive decided to do the one thing Ive never done, have my own site. </p>
                 <p>This will be constantly evolving, so what one button does today, may be different tomorrow.  </p>
@@ -22,6 +21,5 @@ const AboutPage = () => {
             </div>
         </section>
     )
-}
 
 export default AboutPage

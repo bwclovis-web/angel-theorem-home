@@ -7,7 +7,7 @@ import {NavData} from '../../data/navigation'
 const Navigation = () => {
     const {isNavActive} = useContext(TheoremContext)
     const NavWrapperClasses = clsx({
-        'bg-green-900 absolute p-6 z-20': true,
+        'fixed p-6 z-20 bg-indigo-800/80 text-slate-100': true,
         'h-0 -translate-y-[100%]': !isNavActive,
         'md:h-full md:max-w-max transition-all w-full translate-y-[0] duration-400': isNavActive,
     })

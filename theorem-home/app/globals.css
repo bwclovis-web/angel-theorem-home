@@ -7,6 +7,9 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --purple: #663399;
+  --font-color: #09090b;
+  --bg-color: #f5f5f4;
+  --accent-color: #1e1b4b;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,23 +17,27 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --font-color: #f5f5f4;
+    --bg-color: #0c0a09;
+    --accent-color: #3730a3;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  @apply bg-slate-950
+  color: var(--font-color);
+  background-color: var(--bg-color);
 }
 
 h1,
 .h1 {
   font-size: clamp(2.4rem, 6vw, 4rem);
-  @apply uppercase font-bold tracking-wide
+  @apply uppercase font-black tracking-wide
 }
 
 h2,
 .h2 {
-  font-size: clamp(2rem, 6vw, 3.75rem);
+  font-size: clamp(2rem, 6vw, 3rem);
+  @apply font-semibold
 }
 
 
@@ -44,7 +51,16 @@ h2,
   }
 
   .dynamic-offset {
-    @apply pt-28 px-5 md:ml-40 md:pt-10 md:w-1/2 
+    @apply pt-28 px-5 md:ml-40 md:pt-10 xl:w-2/3 2xl:w-1/2
+  }
+
+  .rich-summary {
+    p {
+      @apply pb-2
+    }
+    ul {
+      @apply list-disc pl-5 mb-4
+    }
   }
   
 }
